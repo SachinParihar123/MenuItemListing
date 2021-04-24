@@ -1,20 +1,36 @@
 ﻿apiVersion: apps/v1
-kind: Deployment
+kind: deployment
 metadata:
   name: menu-deployment
 spec:
   selector:
     matchLabels:
-      app: MenuItemListing
+      app: menuitemlisting
   replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: MenuItemListing
+        app: menuitemlisting
     spec:
       containers:
-      - name: MenuItemListing
+      - name: menuitemlisting
         image: practisecheck.azurecr.io/menulistimage:latest
         ports:
         - containerPort: 8080
+    imagepullsecret :
+        name: menussecret
 
+---
+apiVersion: v1
+kind: service
+metadata:
+ name: menuitemlist
+ labels:
+ app: menuitemlisting
+spec:
+ type: Loadbalancer
+ ports:
+ - port: 80
+ 
+ selector:
+ app: menuitemlisting
