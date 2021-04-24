@@ -36,10 +36,10 @@ namespace MenuItemListing
             services.AddDbContext<MenuItemContext>(opt => opt.UseInMemoryDatabase("MenuList"));
             services.AddScoped<IDataRepository<MenuItem>, MenuManager>();
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+            /*services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MenuItemListing", Version = "v1" });
-            });
+            });*/
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -67,8 +67,8 @@ namespace MenuItemListing
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MenuItemListing v1"));
+               // app.UseSwagger();
+               // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MenuItemListing v1"));
             }
 
             app.UseHttpsRedirection();
