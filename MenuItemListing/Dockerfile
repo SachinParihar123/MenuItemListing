@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["MenuItemListing.csproj", ""]
 RUN dotnet restore "./MenuItemListing.csproj"
 COPY . .
-WORKDIR "/src/MenuItemListing"
+WORKDIR "/src/."
 RUN dotnet build "MenuItemListing.csproj" -c Release -o /app/build
 
 FROM build AS publish
