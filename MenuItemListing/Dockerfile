@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["MenuItemListing/MenuItemListing.csproj", "MenuItemListing/"]
-RUN dotnet restore "MenuItemListing/MenuItemListing.csproj"
+COPY ["MenuItemListing.csproj", ""]
+RUN dotnet restore "./MenuItemListing.csproj"
 COPY . .
 WORKDIR "/src/MenuItemListing"
 RUN dotnet build "MenuItemListing.csproj" -c Release -o /app/build
