@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  menuitemlisting:
+    image: ${DOCKER_REGISTRY-}menuitemlisting
+    build:
+      context: .
+      dockerfile: MenuItemListing/Dockerfile
